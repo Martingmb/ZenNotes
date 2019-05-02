@@ -233,5 +233,58 @@ router.post('/end_friendship/:username', (req, res, next) => {
     });
 })
 
+router.get('/get_friends', (req, res, next) => {
+    User.findOne({
+        username: req.session.passport.user
+    }).then(user => {
+        user.getFriends((err, friends) => {
+            if (err) {
+                throw err;
+            }
+
+            res.status(200).json({
+                message: "Succesfully got all friends!",
+                status: 200,
+                friends: friends
+            });
+
+
+        })
+    })
+})
+
+router.post('/post-note', (req, res, next) => {
+
+})
+
+router.get('/get-note', (req, res, next) => {
+
+})
+
+router.get('/get-friends-notes', (req, res, next) => {
+    User.findOne({
+        username: req.session.passport.user
+    }).then(user => {
+        user.getFriends((err, friends) => {
+            if (err) {
+                throw err;
+            }
+
+            var friendsUsernames = [];
+            friends.forEach(element => {
+                friendsUsernames.push(element.username)
+            });
+
+            res.status(200).json({
+                message: "Succesfully got all friends notes!",
+                status: 200,
+                friends: friendsUsernames
+            });
+
+
+        })
+    })
+})
+
 
 module.exports = router;
