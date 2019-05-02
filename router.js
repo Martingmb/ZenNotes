@@ -73,8 +73,156 @@ router.post('/search_user/:username', (req, res, next) => {
         res.status(200).json({
             message: "Succesfully sent the list of users",
             status: 200,
-            posts: users
+            users: users
         });
+    }).catch(err => {
+        res.status(500).json({
+            message: `Internal server error.`,
+            status: 500
+        });
+        return next();
+
+    });
+})
+
+router.post('/send_friend_request/:username', (req, res, next) => {
+    User.findOne({
+        username: req.params.username
+    }).then(user => {
+        var loggedUser = req.session.passport.user;
+        User.findOne({
+            username: loggedUser
+        }).then(userSender => {
+            userSender.friendRequest(user._id, (err, request) => {
+                if (err) {
+                    throw err;
+                }
+
+                console.log(request);
+
+                res.status(200).json({
+                    message: "Succesfully sent friend request!",
+                    status: 200,
+                    request: request
+                });
+
+            })
+        })
+    }).catch(err => {
+        res.status(500).json({
+            message: `Internal server error.`,
+            status: 500
+        });
+        return next();
+
+    });
+})
+
+router.get('/get_friends_request', (req, res, next) => {
+    var loggedUser = req.session.passport.user;
+    User.findOne({
+        username: loggedUser
+    }).then(user => {
+        user.getRequests((err, requests) => {
+            if (err) {
+                throw err;
+            }
+            res.status(200).json({
+                message: "Succesfully sent list of friend requests!",
+                status: 200,
+                requests: requests
+            });
+        })
+    })
+})
+
+router.post('/accept_friend_request/:username', (req, res, next) => {
+    User.findOne({
+        username: req.params.username
+    }).then(user => {
+        var loggedUser = req.session.passport.user;
+        User.findOne({
+            username: loggedUser
+        }).then(userSender => {
+            userSender.acceptRequest(user._id, (err, request) => {
+                if (err) {
+                    throw err;
+                }
+
+                console.log(request);
+
+                res.status(200).json({
+                    message: "Succesfully accepted friend request!",
+                    status: 200,
+                    request: request
+                });
+
+            })
+        })
+    }).catch(err => {
+        res.status(500).json({
+            message: `Internal server error.`,
+            status: 500
+        });
+        return next();
+
+    });
+})
+
+router.post('/deny_friend_request/:username', (req, res, next) => {
+    User.findOne({
+        username: req.params.username
+    }).then(user => {
+        var loggedUser = req.session.passport.user;
+        User.findOne({
+            username: loggedUser
+        }).then(userSender => {
+            userSender.denyRequest(user._id, (err, request) => {
+                if (err) {
+                    throw err;
+                }
+
+                res.status(200).json({
+                    message: "Succesfully denied friend request!",
+                    status: 200,
+                    request: request
+                });
+
+            })
+        })
+    }).catch(err => {
+        res.status(500).json({
+            message: `Internal server error.`,
+            status: 500
+        });
+        return next();
+
+    });
+})
+
+router.post('/end_friendship/:username', (req, res, next) => {
+    User.findOne({
+        username: req.params.username
+    }).then(user => {
+        var loggedUser = req.session.passport.user;
+        User.findOne({
+            username: loggedUser
+        }).then(userSender => {
+            userSender.endFriendship(user._id, (err, request) => {
+                if (err) {
+                    throw err;
+                }
+
+                console.log(request);
+
+                res.status(200).json({
+                    message: "Succesfully ended friendship!",
+                    status: 200,
+                    request: request
+                });
+
+            })
+        })
     }).catch(err => {
         res.status(500).json({
             message: `Internal server error.`,
