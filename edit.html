@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>ZenNotes - A simple note sharing app</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">ZenNotes</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="dashboard.html">Notas</a></li>
+            <li><a href="#">Contactos</a></li>
+            <li><a href="#">Cerrar Sesión</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+            <li><a href="dashboard.html">Notas</a></li>
+            <li><a href="#">Contactos</a></li>
+            <li><a href="#">Cerrar Sesión</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="row section">
+        <h4>Editar nota</h4>
+        <form id="create" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Escribe un título" id="note_title" type="text" class="validate" required>
+              <label for="note_title">Título</label>
+            </div>
+          </div>
+          <div class="row">
+            <div id="editor" class="col s12">
+              <p>Hello World!</p>
+              <p>Some initial <strong>bold</strong> text</p>
+              <p><br></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="switch">
+              <label>
+                <input type="checkbox" id="note_privacy">
+                <span class="lever"></span>
+                Hacer nota privada
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <input class="btn waves-effect- waves-light validate" type="submit" value="Guardar cambios" name="submit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/bin/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+  <script>
+    var quill = new Quill('#editor', {
+      theme: 'snow'
+    });
+  </script>
+  </body>
+</html>
+
+    
