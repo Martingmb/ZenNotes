@@ -1,0 +1,72 @@
+doctype html
+html
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1.0')
+    title ZenNotes - A simple note sharing app
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(rel='stylesheet ', type='text/css ', href='../css/style.css', media='screen,projection')
+  body
+    header
+      nav(role='navigation')
+        .nav-wrapper.container
+          a#logo-container.brand-logo(href='/') ZenNotes
+          ul.right.hide-on-med-and-down
+            li
+              a(href='#') Contactos
+            li
+              a(href='#') Cerrar Sesión
+          ul#nav-mobile.sidenav
+            li
+              a(href='#') Contactos
+            li
+              a(href='#') Cerrar Sesión
+          a.sidenav-trigger(href='#', data-target='nav-mobile')
+            i.material-icons menu
+    main
+      #index-login.section.no-pad-bot
+        br
+        br
+        .valign-wrapper.row.login-box
+          .col.s
+          .col.card.s10.pull-s1.m6.pull-m3.l4.pull-l4
+            form(action='/login', method='post')
+              .card-content
+                span.card-title Iniciar sesión
+                .row
+                  .input-field.col.s12
+                    label(for='username') Usuario
+                    input#username.validate(name='username')
+                  .input-field.col.s12
+                    label(for='password') Contraseña 
+                    input#password.validate(type='password', name='password')
+              .card-action.right-align
+                input#reset.btn-flat.grey-text.waves-effect(type='reset')
+                input.btn.green.waves-effect.waves-light(type='submit', value='Login')
+      .container
+        .section
+          // Icon Section
+          .row
+            .col.s12.m4
+              .icon-block
+                h2.center.light-blue-text
+                  i.material-icons flash_on
+                h5.center Guarda
+                p.light Guarda todas tus notas de una manera ordenada, sencilla y personalizable.
+            .col.s12.m4
+              .icon-block
+                h2.center.light-blue-text
+                  i.material-icons group
+                h5.center Conecta
+                p.light Busca y agrega contactos para poder compartir tus notas de manera pública.
+            .col.s12.m4
+              .icon-block
+                h2.center.light-blue-text
+                  i.material-icons settings
+                h5.center Comparte
+                p.light  Envía notas a otras personas y recibe las notas de ellos en tu propio feed.
+        br
+        br
+    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='../js/bin/materialize.js')
+    script(src='../js/init.js')

@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1.0')
+    title ZenNotes - A simple note sharing app
+    // CSS
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(href='../css/style.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(href='https://cdn.quilljs.com/1.3.6/quill.snow.css', rel='stylesheet')
+  body
+    header
+      nav(role='navigation')
+        .nav-wrapper.container
+          a#logo-container.brand-logo(href='index.html') ZenNotes
+    main
+      .container
+        .row.section
+          h4 Crear una cuenta
+          form#create.col.s12
+            .row
+              .input-field.col.s12
+                input#user.validate(type='text', required='')
+                label(for='note_title') Usuario
+            .row
+              .input-field.col.s12
+                input#user_confirm.validate(type='text', required='')
+                label(for='user_confirm') Confirmar Usuario
+            .row
+              .input-field.col.s12
+                input#password.validate(type='password', required='')
+                label(for='password') Contraseña
+            .row
+              .input-field.col.s12
+                input#password_confirm.validate(type='password', required='')
+                label(for='password_confirm') Confirmar contraseña
+            .row
+              .right-align
+                input.btn.waves-effect-.waves-light.validate(type='submit', value='Registrarse', name='submit')
+    // Scripts
+    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='../js/bin/materialize.js')
+    script(src='../js/init.js')
+    script(src='https://cdn.quilljs.com/1.3.6/quill.js')
+    script.
+      var quill = new Quill('#editor', {
+      theme: 'snow'
+      });

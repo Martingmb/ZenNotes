@@ -12,6 +12,7 @@ let jsonParser = bodyParser.json();
 mongoose.Promise = global.Promise;
 
 app.use(jsonParser);
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
     name: 'session-id',
@@ -27,6 +28,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use('', router);
+app.use(express.static('public'));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'pug');
 
 let server;
 

@@ -1,0 +1,66 @@
+doctype html
+html
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1.0')
+    title ZenNotes - A simple note sharing app
+    // CSS
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(href='../css/style.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(href='https://cdn.quilljs.com/1.3.6/quill.snow.css', rel='stylesheet')
+  body
+    header
+      nav(role='navigation')
+        .nav-wrapper.container
+          a#logo-container.brand-logo(href='/') ZenNotes
+          ul.right.hide-on-med-and-down
+            li
+              a(href='/dashboard') Notas
+            li
+              a(href='#') Contactos
+            li
+              a(href='#') Cerrar Sesión
+          ul#nav-mobile.sidenav
+            li
+              a(href='/dashboard') Notas
+            li
+              a(href='#') Contactos
+            li
+              a(href='#') Cerrar Sesión
+          a.sidenav-trigger(href='#', data-target='nav-mobile')
+            i.material-icons menu
+    main
+      .container
+        .row.section
+          h4 Editar nota
+          form#create.col.s12
+            .row
+              .input-field.col.s12
+                input#note_title.validate(placeholder='Escribe un título', type='text', required='')
+                label(for='note_title') Título
+            .row
+              #editor.col.s12
+                p Hello World!
+                p
+                  | Some initial 
+                  strong bold
+                  |  text
+                p
+                  br
+            .row
+              .switch
+                label
+                  input#note_privacy(type='checkbox')
+                  span.lever
+                  |                 Hacer nota privada
+            .row
+              input.btn.waves-effect-.waves-light.validate(type='submit', value='Guardar cambios', name='submit')
+    // Scripts
+    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='../js/bin/materialize.js')
+    script(src='../js/init.js')
+    script(src='https://cdn.quilljs.com/1.3.6/quill.js')
+    script.
+      var quill = new Quill('#editor', {
+      theme: 'snow'
+      });

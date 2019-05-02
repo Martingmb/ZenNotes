@@ -1,0 +1,64 @@
+doctype html
+html
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1.0')
+    title ZenNotes - A simple note sharing app
+    // CSS
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(href='../css/style.css', type='text/css', rel='stylesheet', media='screen,projection')
+  body
+    header
+      nav.p-l-300(role='navigation')
+        .nav-wrapper.container
+          a#logo-container.brand-logo(href='/') ZenNotes
+          ul.right.hide-on-med-and-down
+            li.active
+              a(href='/dashboard') Notas
+            li
+              a(href='#') Contactos
+            li
+              a(href='#') Cerrar Sesión
+          ul#nav-mobile.sidenav
+            li.filter.active
+              a#filter-all(href='/') Todo
+            li.filter
+              a#filter-day(href='/') El último día
+            li.filter
+              a#filter-week(href='/') La última semana
+            li.filter
+              a#filter-month(href='/') Todo el mes
+            .divider
+            br
+            li.active
+              a(href='/dashboard') Notas
+            li
+              a(href='#') Contactos
+            li
+              a(href='#') Cerrar Sesión
+          a.sidenav-trigger(href='#', data-target='nav-mobile')
+            i.material-icons menu
+      ul#nav-mobile.sidenav.sidenav-fixed.hide-on-med-and-down(style='transform: translateX(0px);')
+        li.filter.active
+          a#filter-all(href='/') Todo
+        li.filter
+          a#filter-day(href='/') El último día
+        li.filter
+          a#filter-week(href='/') La última semana
+        li.filter
+          a#filter-month(href='/') Todo el mes
+        .divider
+    main.p-l-300
+      .container
+        .section
+          .row
+            include card
+        br
+        br
+      .fixed-action-btn
+        a.btn-floating.btn-large.red.waves-effect.waves-light(href='/add')
+          i.large.material-icons add
+    // Scripts
+    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='../js/bin/materialize.js')
+    script(src='../js/init.js')

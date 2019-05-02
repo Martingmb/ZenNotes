@@ -3,6 +3,29 @@ const router = express.Router();
 const User = require('./models/user');
 const passport = require('passport');
 
+
+router.get('/', (req, res, next) => {
+    res.render('index', { title: 'Index' });
+})
+
+router.get('/dashboard', (req, res, next) => {
+    res.render('dashboard', { title: 'Dashboard' });
+})
+
+router.get('/add', (req, res, next) => {
+    res.render('add', { title: 'Add a new note' });
+})
+
+router.get('/edit', (req, res, next) => {
+    res.render('edit', { title: 'Edit note' });
+})
+
+router.post('/add', (req, res, next) => {
+    res.status(200).json({
+        data: req.body
+    })
+})
+
 router.post('/signup', (req, res, next) => {
     User.register(new User({
             username: req.body.username
@@ -38,10 +61,11 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
     }, (err, person) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json({
-            success: true,
-            status: 'You are successfully logged in!'
-        });
+        res.redirect('/dashboard');
+        // res.json({
+        //     success: true,
+        //     status: 'You are successfully logged in!'
+        // });
     })
 });
 
