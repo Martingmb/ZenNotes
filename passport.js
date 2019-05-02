@@ -1,0 +1,1 @@
+var localStrategy = require('passport-local-mongoose')
